@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YourHealth India - AI Healthcare Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2f72ff;
+  --blue2:#1d4ed8;
+  --blue3:#0f3fb3;
+  --sky:#bfe2ff;
+  --soft:#eef6ff;
+  --soft2:#f7fbff;
+  --ink:#09111f;
+  --text:#162033;
+  --muted:#667085;
+  --line:#e7eef8;
+  --white:#fff;
+  --green:#16a34a;
+  --amber:#f59e0b;
+  --red:#dc2626;
+  --shadow:0 18px 50px rgba(26,61,124,.10);
+  --font:'Poppins',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--soft2);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:var(--font)}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,238,248,.85)}
+.nav{max-width:1180px;margin:0 auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
+.brand-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--blue),var(--blue2));display:grid;place-items:center;color:#fff;font-size:15px;font-weight:900;box-shadow:0 12px 26px rgba(47,114,255,.22)}
+.links{display:flex;align-items:center;gap:28px;font-size:13px;font-weight:700;color:#475467}
+.links a:hover{color:var(--blue2)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn{border:0;background:var(--blue);color:#fff;padding:12px 18px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px}
+.btn:hover{background:var(--blue2)}
+.btn.light{background:#eaf2ff;color:var(--blue2)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.line{background:#fff;color:var(--blue2);border:1px solid var(--line)}
+.mobile-toggle{display:none;background:#fff;border:1px solid var(--line);width:44px;height:44px}
+.mobile-toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:4px auto}
+
+.hero{min-height:100vh;padding:118px 24px 56px;background:linear-gradient(180deg,#d9edff 0%,#f7fbff 58%,#fff 100%);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,114,255,.08) 1px,transparent 1px),linear-gradient(rgba(47,114,255,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0%,transparent 70%)}
+.hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.04fr .96fr;gap:48px;align-items:center;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--blue2);border:1px solid var(--line);padding:8px 13px;font-size:12px;font-weight:800;box-shadow:0 10px 30px rgba(47,114,255,.08)}
+.pulse{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 6px rgba(22,163,74,.12)}
+h1{font-size:64px;line-height:1.03;letter-spacing:-.055em;color:var(--ink);font-weight:900;margin-top:22px}
+h1 span{color:var(--blue)}
+.hero-copy{font-size:17px;line-height:1.8;color:#475467;margin-top:22px;max-width:650px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:650px}
+.metric{background:#fff;padding:16px;box-shadow:var(--shadow)}
+.metric strong{display:block;font-size:24px;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.metric span{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-top:3px}
+
+.device-wrap{display:flex;justify-content:center;position:relative;perspective:1200px}
+.phone{width:318px;height:642px;background:linear-gradient(145deg,#0a0d16,#171c2d);padding:12px;border-radius:48px;box-shadow:0 34px 90px rgba(9,17,31,.28),0 0 0 2px #23283a,0 0 0 7px #0a0d16;position:relative;transform:rotate(-2deg)}
+.phone:before{content:"";position:absolute;left:-6px;top:132px;width:4px;height:76px;background:#1c2235;border-radius:4px 0 0 4px}
+.phone:after{content:"";position:absolute;right:-6px;top:166px;width:4px;height:104px;background:#1c2235;border-radius:0 4px 4px 0}
+.screen{height:100%;background:linear-gradient(180deg,#bfe2ff 0%,#f7fbff 28%,#fff 100%);overflow:hidden;position:relative;border-radius:38px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.status{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:11px;font-weight:800;color:#0b1020}
+.notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:96px;height:28px;background:#05070d;border-radius:18px;z-index:2}
+.notch:after{content:"";position:absolute;right:16px;top:9px;width:10px;height:10px;border-radius:50%;background:#10192d;box-shadow:inset 0 0 0 2px #18233b}
+.app-head{padding:22px 18px 8px;display:flex;align-items:center;justify-content:space-between}
+.avatar{width:42px;height:42px;background:#fff;display:grid;place-items:center;font-weight:900;color:var(--blue);box-shadow:0 8px 18px rgba(47,114,255,.12)}
+.circle-btn{width:42px;height:42px;background:#fff;display:grid;place-items:center;color:var(--ink);box-shadow:0 8px 18px rgba(47,114,255,.12)}
+.phone-title{padding:4px 18px 0}
+.phone-title p{font-size:12px;font-weight:700;color:#667085}
+.phone-title h3{font-size:24px;font-weight:900;color:var(--ink);line-height:1.1;margin-top:3px;letter-spacing:-.04em}
+.search{margin:18px;background:#fff;padding:13px 14px;display:flex;align-items:center;gap:9px;color:#98a2b3;font-size:12px;font-weight:700;box-shadow:0 10px 24px rgba(47,114,255,.10)}
+.journey-card{margin:0 18px 10px;background:#fff;padding:15px;box-shadow:0 10px 24px rgba(47,114,255,.10)}
+.journey-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.journey-top h4{font-size:14px;font-weight:900;color:var(--ink)}
+.tag{font-size:10px;font-weight:900;padding:5px 8px;background:#eaf2ff;color:var(--blue2)}
+.progress{height:8px;background:#eef2f7;margin-top:12px;overflow:hidden}
+.progress span{display:block;width:68%;height:100%;background:linear-gradient(90deg,var(--blue),#5aa4ff)}
+.steps-mini{display:grid;gap:8px;margin:14px 18px 0}
+.mini{display:flex;align-items:center;gap:10px;background:#fff;padding:10px 12px;box-shadow:0 8px 20px rgba(47,114,255,.08)}
+.mini-num{width:24px;height:24px;background:#eaf2ff;color:var(--blue2);display:grid;place-items:center;font-size:11px;font-weight:900}
+.mini strong{font-size:12px;color:var(--ink)}
+.mini span{font-size:10px;color:var(--muted);display:block;font-weight:600}
+.bottom-nav{position:absolute;left:18px;right:18px;bottom:16px;height:62px;background:#10121f;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;color:#fff}
+.nav-dot{display:grid;place-items:center;font-size:10px;font-weight:800;color:#98a2b3}
+.nav-dot.active span{background:var(--blue);color:#fff}
+.nav-dot span{width:34px;height:34px;display:grid;place-items:center}
+
+section{padding:86px 24px}
+.section-inner{max-width:1180px;margin:0 auto}
+.section-head{max-width:720px;margin-bottom:34px}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue2);font-weight:900;margin-bottom:10px}
+h2{font-size:44px;line-height:1.09;letter-spacing:-.045em;color:var(--ink);font-weight:900}
+.section-head p{font-size:16px;line-height:1.75;color:var(--muted);margin-top:14px}
+
+.journey{background:#fff}
+.journey-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.journey-step{background:var(--soft2);padding:18px;min-height:156px;position:relative;overflow:hidden}
+.journey-step:before{content:attr(data-step);position:absolute;right:12px;top:8px;font-size:38px;font-weight:900;color:#dceaff;letter-spacing:-.06em}
+.journey-step h3{font-size:15px;line-height:1.25;color:var(--ink);font-weight:900;position:relative;z-index:1}
+.journey-step p{font-size:12px;line-height:1.55;color:var(--muted);margin-top:10px;position:relative;z-index:1}
+
+.platform{background:linear-gradient(180deg,#fff 0%,#eef6ff 100%)}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{background:#fff;padding:24px;box-shadow:var(--shadow)}
+.feature .icon{width:44px;height:44px;background:#eaf2ff;color:var(--blue2);display:grid;place-items:center;font-weight:900;margin-bottom:16px}
+.feature h3{font-size:18px;color:var(--ink);font-weight:900;letter-spacing:-.02em}
+.feature p{font-size:13px;line-height:1.7;color:var(--muted);margin-top:9px}
+.feature small{display:inline-block;margin-top:14px;color:var(--blue2);font-weight:900;font-size:11px;background:#eaf2ff;padding:6px 9px}
+
+.network{background:#09111f;color:#fff}
+.network .section-head h2,.network h3{color:#fff}
+.network .section-head p{color:#b7c0d1}
+.network-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.network-card{background:rgba(255,255,255,.06);padding:28px;border:1px solid rgba(255,255,255,.08)}
+.network-card p{font-size:14px;line-height:1.75;color:#b7c0d1;margin-top:10px}
+.doctor-slots{display:grid;gap:10px;margin-top:20px}
+.slot{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.07);padding:13px 14px}
+.slot span{font-size:13px;color:#d6deeb;font-weight:700}
+.slot strong{font-size:12px;color:#8fb7ff}
+
+.insurance{background:#fff}
+.insurance-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start}
+.policy-panel{background:linear-gradient(135deg,var(--blue),var(--blue3));color:#fff;padding:30px;min-height:360px}
+.policy-panel h3{font-size:25px;font-weight:900;letter-spacing:-.035em}
+.policy-panel p{font-size:13px;line-height:1.7;color:#dbeafe;margin-top:8px}
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.policy-item{background:rgba(255,255,255,.12);padding:14px}
+.policy-item span{font-size:10px;color:#dbeafe;font-weight:700}
+.policy-item strong{display:block;font-size:16px;font-weight:900;margin-top:4px}
+.claims{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.claim{background:var(--soft2);padding:20px;min-height:150px}
+.claim h4{font-size:15px;color:var(--ink);font-weight:900}
+.claim p{font-size:12px;color:var(--muted);line-height:1.65;margin-top:8px}
+
+.records{background:linear-gradient(180deg,#eef6ff 0%,#fff 100%)}
+.records-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.record-card{background:#fff;padding:24px;box-shadow:var(--shadow)}
+.timeline{display:grid;gap:12px;margin-top:14px}
+.time-row{display:grid;grid-template-columns:88px 1fr;gap:14px;font-size:13px}
+.time-row span{font-weight:900;color:var(--blue2)}
+.time-row p{color:var(--muted);line-height:1.5}
+
+.cta{padding:90px 24px;background:linear-gradient(135deg,#0b1020,#123e90);color:#fff}
+.cta-box{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+.cta h2{color:#fff}
+.cta p{color:#c8d7ef;font-size:15px;line-height:1.7;margin-top:12px;max-width:650px}
+.signin-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.brand-login{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:11px 15px;color:#fff;font-size:13px;font-weight:800}
+.brand-login svg{width:20px;height:20px;display:block}
+
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.contact-list{display:grid;gap:12px;margin-top:20px}
+.contact-list div{background:var(--soft2);padding:16px;font-size:13px;color:var(--muted);font-weight:700}
+.contact-list strong{display:block;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.contact-list a{color:var(--blue2);font-weight:900}
+.page-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.page-links a{background:#fff;border:1px solid var(--line);padding:12px 13px;font-size:12px;font-weight:900;color:var(--blue2)}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.social-link{display:inline-flex;align-items:center;gap:10px;background:#0a66c2;color:#fff;padding:12px 15px;font-size:13px;font-weight:900}
+.social-link svg{width:20px;height:20px;display:block;fill:#fff}
+.form{background:var(--soft2);padding:26px}
+.field{display:grid;gap:7px;margin-bottom:14px}
+.field label{font-size:12px;font-weight:900;color:#344054}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;padding:13px 14px;font-size:13px;outline:none;color:var(--text)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+.field textarea{min-height:110px;resize:vertical}
+
+footer{background:#07101f;color:#b7c0d1;padding:44px 24px}
+.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:28px}
+footer h4{color:#fff;font-size:13px;font-weight:900;margin-bottom:13px}
+footer p,footer a{font-size:13px;line-height:1.8;color:#9aa8bd;display:block}
+footer a.social-footer{display:inline-flex;align-items:center;gap:8px;margin-top:6px;color:#fff}
+footer a.social-footer svg{width:18px;height:18px;fill:#0a66c2;background:#fff}
+.footer-bottom{max-width:1180px;margin:30px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#7f8da1}
+
+@media(max-width:980px){
+  .links,.nav-actions{display:none}
+  .mobile-toggle{display:block}
+  .hero-inner,.network-grid,.insurance-layout,.records-layout,.contact-grid,.cta-box{grid-template-columns:1fr}
+  .hero{padding-top:104px}
+  h1{font-size:44px}
+  h2{font-size:34px}
+  .device-wrap{margin-top:8px}
+  .journey-grid{grid-template-columns:1fr 1fr}
+  .feature-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav{height:68px;padding:0 16px}
+  .hero{padding:94px 16px 42px}
+  h1{font-size:36px}
+  .hero-copy{font-size:15px}
+  .hero-metrics,.journey-grid,.feature-grid,.claims,.policy-grid,.footer-inner{grid-template-columns:1fr}
+  section{padding:62px 16px}
+  .phone{width:286px;height:580px;border-radius:44px}
+  .cta,.contact{padding-left:16px;padding-right:16px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">YH</span>
+      <span>YourHealth India</span>
+    </a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="journey.html">Journey</a>
+      <a href="platform.html">Platform</a>
+      <a href="doctors-network.html">Doctor Network</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="records.html">Records</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn light" href="contact.html">Partner With Us</a>
+      <a class="btn" href="get-started.html">Get Started</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span>AI healthcare journey for India</div>
+        <h1>One patient flow from <span>symptom</span> to recovery.</h1>
+        <p class="hero-copy">YourHealth India connects AI symptom checking, risk assessment, department recommendation, appointment booking, consultation, prescriptions, medicine ordering, insurance support, digital records and monitoring in one clean experience.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#journey">View Patient Journey</a>
+          <a class="btn line" href="platform.html">Explore Platform</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric"><strong>10</strong><span>Care journey steps</span></div>
+          <div class="metric"><strong>8</strong><span>Indian languages</span></div>
+          <div class="metric"><strong>24/7</strong><span>AI triage support</span></div>
+        </div>
+      </div>
+
+      <div class="device-wrap" aria-label="YourHealth app preview">
+        <div class="phone">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="status"><span>9:41</span><span>LTE 100%</span></div>
+            <div class="app-head">
+              <div class="avatar">YH</div>
+              <div class="circle-btn">IN</div>
+            </div>
+            <div class="phone-title">
+              <p>Hello</p>
+              <h3>Tell us what is happening</h3>
+            </div>
+            <div class="search">Type symptoms in any language</div>
+            <div class="journey-card">
+              <div class="journey-top">
+                <h4>AI Risk Assessment</h4>
+                <span class="tag">MEDIUM</span>
+              </div>
+              <div class="progress"><span></span></div>
+            </div>
+            <div class="steps-mini">
+              <div class="mini"><span class="mini-num">1</span><div><strong>Department matched</strong><span>General physician first</span></div></div>
+              <div class="mini"><span class="mini-num">2</span><div><strong>Doctors appear after signup</strong><span>Real network only</span></div></div>
+              <div class="mini"><span class="mini-num">3</span><div><strong>Insurance and records</strong><span>Claim-ready timeline</span></div></div>
+            </div>
+            <div class="bottom-nav">
+              <div class="nav-dot active"><span>H</span></div>
+              <div class="nav-dot"><span>AI</span></div>
+              <div class="nav-dot"><span>DR</span></div>
+              <div class="nav-dot"><span>IN</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" id="journey">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="label">Patient Journey</div>
+        <h2>A healthcare flow that feels simple from the first tap.</h2>
+        <p>The website now matches the app journey: the patient starts with symptoms, receives AI guidance, books with real signed-up doctors, and continues through recovery.</p>
+      </div>
+      <div class="journey-grid">
+        <div class="journey-step" data-step="01"><h3>AI Symptom Checker</h3><p>Patients describe symptoms in plain language and the AI prepares the next step.</p></div>
+        <div class="journey-step" data-step="02"><h3>Risk Assessment Engine</h3><p>Symptoms are reviewed for urgency, severity and red flags before booking.</p></div>
+        <div class="journey-step" data-step="03"><h3>Department Recommendation</h3><p>The app suggests the right department before showing available doctors.</p></div>
+        <div class="journey-step" data-step="04"><h3>Appointment Booking</h3><p>Only doctors who register in the platform appear for booking and payment.</p></div>
+        <div class="journey-step" data-step="05"><h3>Doctor Consultation</h3><p>Secure chat and video consultation connect patient and doctor.</p></div>
+        <div class="journey-step" data-step="06"><h3>Prescription Generation</h3><p>Doctors create signed digital prescriptions after the consultation.</p></div>
+        <div class="journey-step" data-step="07"><h3>Medicine Ordering</h3><p>Prescription-based medicine ordering connects to pharmacy fulfilment.</p></div>
+        <div class="journey-step" data-step="08"><h3>Insurance Support</h3><p>Claims, cost estimates, PM-JAY, ABHA, LIC and policy support stay in one place.</p></div>
+        <div class="journey-step" data-step="09"><h3>Digital Health Records</h3><p>Reports, prescriptions, claims and consultation notes become one patient timeline.</p></div>
+        <div class="journey-step" data-step="10"><h3>Health Monitoring</h3><p>Follow-up reminders, vitals and care tasks keep the patient moving after treatment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="platform" id="platform">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="label">Platform</div>
+        <h2>Built with the same calm blue interface as the app.</h2>
+        <p>Every module is designed around action: assess, recommend, book, consult, document, insure and monitor.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature"><div class="icon">AI</div><h3>AI symptom intake</h3><p>Guided patient entry with language support and clear next-step routing.</p><small>Patient first</small></div>
+        <div class="feature"><div class="icon">RA</div><h3>Risk assessment</h3><p>Low, medium and high priority flows for safer triage and faster escalation.</p><small>Priority aware</small></div>
+        <div class="feature"><div class="icon">DP</div><h3>Department match</h3><p>Specialty matching happens before doctor listing, reducing confusion.</p><small>Smarter booking</small></div>
+        <div class="feature"><div class="icon">BK</div><h3>Booking and payment</h3><p>Real doctors who sign up can publish availability, fees and consultation modes.</p><small>No fake profiles</small></div>
+        <div class="feature"><div class="icon">RX</div><h3>Digital prescriptions</h3><p>Doctor-generated e-prescriptions can connect to medicine ordering and records.</p><small>Doctor controlled</small></div>
+        <div class="feature"><div class="icon">IN</div><h3>Insurance support</h3><p>Coverage comparison, claim assistance and cost estimation for Indian policies.</p><small>Policy ready</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="network" id="network">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="label">Doctor Network</div>
+        <h2>No placeholder doctors. Real supply comes from signup.</h2>
+        <p>The website no longer markets fake doctor cards. Doctors appear when they register, set their department, add availability and go live on the platform.</p>
+      </div>
+      <div class="network-grid">
+        <div class="network-card">
+          <h3>For patients</h3>
+          <p>Patients see department recommendations first. Doctor results are based on signed-up providers, availability, specialty and consultation fee.</p>
+          <div class="doctor-slots">
+            <div class="slot"><span>Signed-up General Physicians</span><strong>Live network</strong></div>
+            <div class="slot"><span>Signed-up Cardiologists</span><strong>Live network</strong></div>
+            <div class="slot"><span>Signed-up Dermatologists</span><strong>Live network</strong></div>
+          </div>
+        </div>
+        <div class="network-card">
+          <h3>For doctors</h3>
+          <p>Doctors can join the platform, manage appointment slots, consult patients, upload lab reports, issue prescriptions and receive payouts.</p>
+          <div class="doctor-slots">
+            <div class="slot"><span>Profile and specialization</span><strong>Required</strong></div>
+            <div class="slot"><span>Consultation fee and payout</span><strong>Required</strong></div>
+            <div class="slot"><span>Availability and mode</span><strong>Required</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurance" id="insurance">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="label">Insurance Support</div>
+        <h2>Coverage, claims and cost estimation in the same patient flow.</h2>
+        <p>Insurance is not a separate confusing step. It appears when the patient needs it, from pre-authorisation to claim documents.</p>
+      </div>
+      <div class="insurance-layout">
+        <div class="policy-panel">
+          <h3>YourHealth coverage hub</h3>
+          <p>ABHA, PM-JAY, LIC health policy and major Indian health policies can be connected to patient records and claim assistance.</p>
+          <div class="policy-grid">
+            <div class="policy-item"><span>Basic</span><strong>INR 5L</strong></div>
+            <div class="policy-item"><span>Plus</span><strong>INR 10L</strong></div>
+            <div class="policy-item"><span>Premium</span><strong>INR 25L</strong></div>
+            <div class="policy-item"><span>Status</span><strong>Active</strong></div>
+          </div>
+        </div>
+        <div class="claims">
+          <div class="claim"><h4>Cashless claims</h4><p>Hospital network and pre-authorisation support before treatment.</p></div>
+          <div class="claim"><h4>Reimbursement</h4><p>Bills, discharge summary, prescription and policy documents checklist.</p></div>
+          <div class="claim"><h4>Day care</h4><p>Short procedure support for cataract, appendix and similar treatments.</p></div>
+          <div class="claim"><h4>Ambulance</h4><p>Emergency transport claim flow with document guidance.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="records" id="records">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="label">Digital Records</div>
+        <h2>One record for every patient interaction.</h2>
+        <p>Doctor-uploaded lab reports, prescriptions, consultation summaries, claims and monitoring data become a clean patient timeline.</p>
+      </div>
+      <div class="records-layout">
+        <div class="record-card">
+          <h3>Health timeline</h3>
+          <div class="timeline">
+            <div class="time-row"><span>Step 1</span><p>AI symptom details and risk level saved.</p></div>
+            <div class="time-row"><span>Step 2</span><p>Department recommendation and doctor booking captured.</p></div>
+            <div class="time-row"><span>Step 3</span><p>Consultation note and digital prescription stored.</p></div>
+            <div class="time-row"><span>Step 4</span><p>Insurance claim documents and monitoring reminders attached.</p></div>
+          </div>
+        </div>
+        <div class="record-card">
+          <h3>Monitoring after care</h3>
+          <div class="timeline">
+            <div class="time-row"><span>Vitals</span><p>Pulse, SpO2, BP and recovery checkpoints.</p></div>
+            <div class="time-row"><span>Follow-up</span><p>Doctor reminders for review and medicine completion.</p></div>
+            <div class="time-row"><span>Alerts</span><p>Risk-based reminders if symptoms worsen.</p></div>
+            <div class="time-row"><span>Records</span><p>All updates remain linked to the patient profile.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="start">
+    <div class="cta-box">
+      <div>
+        <div class="label" style="color:#8fb7ff">Get Started</div>
+        <h2>Launch the patient journey with real doctors and connected insurance.</h2>
+        <p>Use this website as the front door for patients, doctors, insurance partners and hospital networks.</p>
+        <div class="signin-row">
+          <a class="brand-login" href="https://accounts.google.com/signin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 256 193" aria-hidden="true"><path fill="#4285F4" d="M58 193H18C8 193 0 185 0 175V35l58 43v115z"/><path fill="#34A853" d="M238 193h-40V78l58-43v140c0 10-8 18-18 18z"/><path fill="#EA4335" d="M198 78v40L128 66 58 118V78l70-52 70 52z"/><path fill="#FBBC04" d="M256 35l-58 43V0l47 35c7 5 11 8 11 0z"/><path fill="#C5221F" d="M0 35l58 43V0L11 35C4 40 0 43 0 35z"/></svg>
+            Gmail sign in
+          </a>
+          <a class="brand-login" href="https://login.yahoo.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 180 48" aria-hidden="true"><path fill="#6001D2" d="M20 35L4 6h14l8 17 9-17h13L27 47H14l6-12zM58 13c12 0 20 7 20 18s-8 18-20 18-20-7-20-18 8-18 20-18zm0 10c-5 0-8 3-8 8s3 8 8 8 8-3 8-8-3-8-8-8zM100 13c12 0 20 7 20 18s-8 18-20 18-20-7-20-18 8-18 20-18zm0 10c-5 0-8 3-8 8s3 8 8 8 8-3 8-8-3-8-8-8zM127 6h12v17h15V6h12v42h-12V33h-15v15h-12V6zM174 36h12v12h-12V36z"/></svg>
+            Yahoo sign in
+          </a>
+        </div>
+      </div>
+      <a class="btn" href="contact.html">Talk to Team</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="#home" style="color:#fff"><span class="brand-mark">YH</span><span>YourHealth India</span></a>
+      <p style="margin-top:16px">AI healthcare journey for patients, doctors, insurers, hospitals and pharmacies.</p>
+      <a class="social-footer" href="https://www.linkedin.com/in/yourhealthindia-undefined-60329b414/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.33 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.55V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div><h4>Pages</h4><a href="#home">Home</a><a href="journey.html">Patient Journey</a><a href="platform.html">Platform</a><a href="doctors-network.html">Doctor Network</a></div>
+    <div><h4>Care</h4><a href="insurance.html">Insurance</a><a href="records.html">Digital Records</a><a href="get-started.html">Get Started</a></div>
+    <div><h4>Contact Us</h4><a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+    <a href="mailto:partneratyourhealthindia@gmail.com">partneratyourhealthindia@gmail.com</a><a href="contact.html">Chandigarh, India</a><a href="contact.html">Partner Enquiry</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>2026 YourHealth India. All rights reserved.</span>
+    <span>ABHA-ready. Insurance-ready. Doctor network-ready.</span>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.mobile-toggle').addEventListener('click',()=>{
+  const links=document.querySelector('.links');
+  const showing=links.style.display==='flex';
+  links.style.display=showing?'none':'flex';
+  links.style.position='absolute';
+  links.style.left='16px';
+  links.style.right='16px';
+  links.style.top='72px';
+  links.style.background='#fff';
+  links.style.padding='16px';
+  links.style.flexDirection='column';
+  links.style.alignItems='flex-start';
+  links.style.boxShadow='0 20px 50px rgba(26,61,124,.14)';
+});
+</script>
+</body>
+</html>
