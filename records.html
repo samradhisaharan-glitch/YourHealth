@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Records - YourHealth India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#2f72ff;--blue2:#1d4ed8;--soft:#eef6ff;--soft2:#f7fbff;--ink:#09111f;--text:#162033;--muted:#667085;--line:#e7eef8;--green:#16a34a;--amber:#f59e0b;--shadow:0 18px 50px rgba(26,61,124,.10);--font:'Poppins',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{font-family:var(--font);background:var(--soft2);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,238,248,.85)}
+.nav{max-width:1180px;margin:0 auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
+.brand-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--blue),var(--blue2));display:grid;place-items:center;color:#fff;font-size:15px;font-weight:900;box-shadow:0 12px 26px rgba(47,114,255,.22)}
+.links{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:800;color:#475467}
+.links a:hover{color:var(--blue2)}
+.btn{border:0;background:var(--blue);color:#fff;padding:12px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px}
+.btn:hover{background:var(--blue2)}
+.btn.line{background:#fff;color:var(--blue2);border:1px solid var(--line)}
+.hero{padding:126px 24px 54px;background:linear-gradient(180deg,#d9edff 0%,#f7fbff 58%,#fff 100%);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,114,255,.08) 1px,transparent 1px),linear-gradient(rgba(47,114,255,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0%,transparent 72%)}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr .78fr;gap:34px;align-items:end}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue2);font-weight:900;margin-bottom:12px}
+h1{font-size:60px;line-height:1.04;letter-spacing:-.055em;color:var(--ink);font-weight:900;max-width:760px}
+.intro{font-size:17px;line-height:1.8;color:#475467;margin-top:18px;max-width:720px}
+.panel{background:#fff;box-shadow:var(--shadow);padding:24px}
+.panel h2{font-size:18px;color:var(--ink);font-weight:900;margin-bottom:14px}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini{background:var(--soft2);padding:14px}
+.mini strong{display:block;font-size:22px;color:var(--blue2);font-weight:900}
+.mini span{font-size:11px;color:var(--muted);font-weight:800}
+.section{padding:70px 24px;background:#fff}
+.section.alt{background:linear-gradient(180deg,#eef6ff 0%,#fff 100%)}
+.inner{max-width:1180px;margin:0 auto}
+.head{max-width:760px;margin-bottom:28px}
+.head h2{font-size:42px;line-height:1.1;letter-spacing:-.045em;color:var(--ink);font-weight:900}
+.head p{font-size:15px;line-height:1.75;color:var(--muted);margin-top:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--soft2);padding:24px;min-height:188px;box-shadow:0 12px 34px rgba(26,61,124,.06)}
+.icon{width:44px;height:44px;background:#fff;color:var(--blue2);display:grid;place-items:center;font-weight:900;margin-bottom:16px}
+.card h3{font-size:18px;color:var(--ink);font-weight:900}
+.card p{font-size:13px;line-height:1.7;color:var(--muted);margin-top:9px}
+.timeline{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:112px 1fr auto;gap:16px;align-items:center;background:#fff;padding:18px;box-shadow:var(--shadow)}
+.row strong{font-size:14px;color:var(--blue2);font-weight:900}
+.row h3{font-size:17px;color:var(--ink);font-weight:900}
+.row p{font-size:13px;color:var(--muted);line-height:1.65;margin-top:5px}
+.tag{font-size:11px;font-weight:900;background:#eaf2ff;color:var(--blue2);padding:8px 10px;white-space:nowrap}
+.monitor{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric{background:#fff;border:1px solid var(--line);padding:18px}
+.metric strong{display:block;font-size:28px;color:var(--blue2);font-weight:900}
+.metric span{font-size:12px;color:var(--muted);font-weight:800}
+.cta{padding:74px 24px;background:linear-gradient(135deg,#0b1020,#123e90);color:#fff}
+.cta-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+.cta h2{font-size:40px;line-height:1.12;letter-spacing:-.045em;color:#fff;font-weight:900}
+.cta p{color:#c8d7ef;font-size:15px;line-height:1.7;margin-top:10px;max-width:640px}
+footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
+.footer-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px}
+.footer-inner a{color:#9aa8bd}
+@media(max-width:1000px){.monitor{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.links{display:none}.hero-inner,.cta-inner{grid-template-columns:1fr}h1{font-size:40px}.row{grid-template-columns:1fr}.tag{width:max-content}}
+@media(max-width:620px){.nav{height:68px;padding:0 16px}.hero{padding:104px 16px 40px}.section,.cta{padding-left:16px;padding-right:16px}.mini-grid,.monitor,.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="yourhealth-website-redesign.html"><span class="brand-mark">YH</span><span>YourHealth India</span></a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="journey.html">Journey</a>
+      <a href="platform.html">Platform</a>
+      <a href="doctors-network.html">Doctor Network</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="records.html">Records</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn line" href="yourhealth-website-redesign.html">Back to Home</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="label">Digital Records</div>
+        <h1>One patient record for the full care journey.</h1>
+        <p class="intro">YourHealth India keeps symptom history, risk assessment, department recommendation, appointments, prescriptions, lab reports, insurance documents and monitoring data in one clean timeline.</p>
+      </div>
+      <div class="panel">
+        <h2>Record snapshot</h2>
+        <div class="mini-grid">
+          <div class="mini"><strong>ABHA</strong><span>Ready structure</span></div>
+          <div class="mini"><strong>RX</strong><span>Prescriptions</span></div>
+          <div class="mini"><strong>LAB</strong><span>Reports</span></div>
+          <div class="mini"><strong>360</strong><span>Timeline</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="head">
+        <div class="label">Record Types</div>
+        <h2>Everything saved in one place.</h2>
+        <p>The patient does not need to manage scattered PDFs, prescriptions and claim documents manually.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="icon">AI</div><h3>AI triage record</h3><p>Symptoms, known problem, language, risk level and department recommendation.</p></div>
+        <div class="card"><div class="icon">DR</div><h3>Consultation notes</h3><p>Doctor consultation summary, follow-up advice and care plan.</p></div>
+        <div class="card"><div class="icon">RX</div><h3>Digital prescriptions</h3><p>Medicine name, dosage, duration, instructions and pharmacy connection.</p></div>
+        <div class="card"><div class="icon">LAB</div><h3>Doctor-uploaded reports</h3><p>Reviewed lab reports uploaded by doctors or authorised clinical staff.</p></div>
+        <div class="card"><div class="icon">IN</div><h3>Insurance documents</h3><p>Policy details, pre-authorisation, bills, discharge summary and claim checklist.</p></div>
+        <div class="card"><div class="icon">HM</div><h3>Health monitoring</h3><p>Vitals, follow-up reminders, medicine reminders and recovery tasks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="inner">
+      <div class="head">
+        <div class="label">Timeline</div>
+        <h2>Patient history as a clear sequence.</h2>
+      </div>
+      <div class="timeline">
+        <div class="row"><strong>Step 1</strong><div><h3>AI symptom and risk saved</h3><p>The patient issue and risk category are added to the record.</p></div><span class="tag">Triage</span></div>
+        <div class="row"><strong>Step 2</strong><div><h3>Department and booking captured</h3><p>Recommended department, doctor, slot, payment and appointment status are stored.</p></div><span class="tag">Booking</span></div>
+        <div class="row"><strong>Step 3</strong><div><h3>Consultation and prescription attached</h3><p>Doctor notes and e-prescription become part of the patient file.</p></div><span class="tag">Care</span></div>
+        <div class="row"><strong>Step 4</strong><div><h3>Insurance and monitoring added</h3><p>Claim documents, policy checks, vitals and follow-up reminders complete the timeline.</p></div><span class="tag">Recovery</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="head">
+        <div class="label">Monitoring</div>
+        <h2>Records continue after consultation.</h2>
+      </div>
+      <div class="monitor">
+        <div class="metric"><strong>SpO2</strong><span>Oxygen tracking</span></div>
+        <div class="metric"><strong>BP</strong><span>Blood pressure</span></div>
+        <div class="metric"><strong>RX</strong><span>Medicine reminder</span></div>
+        <div class="metric"><strong>FU</strong><span>Follow-up alert</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-inner">
+      <div>
+        <div class="label" style="color:#8fb7ff">Records Ready</div>
+        <h2>Connect digital health records into YourHealth.</h2>
+        <p>Contact YourHealth India for ABHA-ready record design, hospital integrations and patient timeline workflows.</p>
+      </div>
+      <a class="btn" href="contact.html">Contact Us</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>2026 YourHealth India. All rights reserved.</span>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+    <a href="mailto:partneratyourhealthindia@gmail.com">partneratyourhealthindia@gmail.com</a>
+  </div>
+</footer>
+</body>
+</html>
