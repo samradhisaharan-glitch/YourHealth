@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#059669">
 <title>Get Started - YourHealth India</title>
+<link rel="manifest" href="app-manifest.webmanifest">
+<link rel="icon" href="app-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,6 +35,8 @@ h1{font-size:60px;line-height:1.04;letter-spacing:-.055em;color:var(--ink);font-
 .download-card h2{font-size:26px;line-height:1.18;letter-spacing:-.04em;color:var(--ink);font-weight:900}
 .download-card p{font-size:14px;line-height:1.7;color:var(--muted);margin-top:10px}
 .file-box{background:var(--soft2);border:1px solid var(--line);padding:15px;margin-top:18px;font-size:13px;font-weight:800;color:var(--ink);word-break:break-word}
+.install-note{margin-top:18px;padding:16px;background:var(--soft);color:#344054;font-size:13px;line-height:1.65}
+.install-note strong{color:var(--ink)}
 .steps{padding:70px 24px 84px;background:#fff}
 .inner{max-width:1180px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -49,7 +54,7 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
 <body>
 <header class="topbar">
   <div class="nav">
-    <a class="brand" href="yourhealth-website-redesign.html"><span class="brand-mark">YH</span><span>YourHealth India</span></a>
+    <a class="brand" href="index.html"><span class="brand-mark">YH</span><span>YourHealth India</span></a>
     <nav class="links" aria-label="Main navigation">
       <a href="journey.html">Journey</a>
       <a href="platform.html">Platform</a>
@@ -57,7 +62,7 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
       <a href="insurance.html">Insurance</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a class="btn line" href="yourhealth-website-redesign.html">Back to Home</a>
+    <a class="btn line" href="index.html">Back to Home</a>
   </div>
 </header>
 
@@ -66,21 +71,23 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
     <div class="hero-inner">
       <div>
         <div class="label">Get Started</div>
-        <h1>Open or download the YourHealth app.</h1>
-        <p class="intro">Use the app HTML demo for testing, sharing or deployment. When deploying, rename the app file to `index.html` inside your app folder.</p>
+        <h1>Download the YourHealth app.</h1>
+        <p class="intro">Install YourHealth on macOS, or add the web app to your Android or iPhone Home Screen.</p>
         <div class="actions">
-          <a class="btn" href="yourhealth-app-v7-ai-journey.html">Open App</a>
-          <a class="btn line" href="yourhealth-app-v7-ai-journey.html" download>Download App HTML</a>
+          <a class="btn" href="YourHealth-macOS.zip" download>Download for macOS</a>
+          <button class="btn" id="install-app" type="button">Install App</button>
+          <a class="btn line" href="yourhealth-app-v9-patient-flow.html">Open App</a>
         </div>
+        <div class="install-note" id="install-note"><strong>Mac:</strong> download, unzip and move YourHealth to Applications. <strong>Android:</strong> tap Install App. <strong>iPhone:</strong> open in Safari, tap Share, then Add to Home Screen.</div>
       </div>
       <div class="download-card">
         <div class="label">App File</div>
         <h2>YourHealth patient-flow app</h2>
         <p>This is the latest app version with language selection, AI symptom intake, risk assessment, department recommendation, booking, insurance, records and monitoring.</p>
-        <div class="file-box">yourhealth-app-v7-ai-journey.html</div>
+        <div class="file-box">YourHealth Web App v1.0</div>
         <div class="actions">
-          <a class="btn" href="yourhealth-app-v7-ai-journey.html">Open Demo</a>
-          <a class="btn line" href="yourhealth-app-v7-ai-journey.html" download>Download File</a>
+          <a class="btn" href="yourhealth-app-v9-patient-flow.html">Open Demo</a>
+          <a class="btn line" href="YourHealth-macOS.zip" download>macOS App</a>
         </div>
       </div>
     </div>
@@ -90,9 +97,9 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
     <div class="inner">
       <div class="label">Deploy Steps</div>
       <div class="grid">
-        <div class="step"><strong>1</strong><h3>Create website folder</h3><p>Keep `index.html`, `journey.html`, `platform.html`, `contact.html`, `get-started.html`, and the app HTML in one folder.</p></div>
-        <div class="step"><strong>2</strong><h3>Rename homepage</h3><p>For deployment, rename `yourhealth-website-redesign.html` to `index.html`.</p></div>
-        <div class="step"><strong>3</strong><h3>Upload folder</h3><p>Drag the whole folder to Netlify Drop, Vercel, GitHub Pages or Cloudflare Pages.</p></div>
+        <div class="step"><strong>1</strong><h3>Open the website</h3><p>Visit the live YourHealth website using Chrome on Android or Safari on iPhone.</p></div>
+        <div class="step"><strong>2</strong><h3>Install the app</h3><p>Android users tap Install App. iPhone users choose Share, then Add to Home Screen.</p></div>
+        <div class="step"><strong>3</strong><h3>Launch YourHealth</h3><p>The YourHealth icon appears on the phone Home Screen and opens as a full-screen app.</p></div>
       </div>
     </div>
   </section>
@@ -107,5 +114,35 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
     <a href="mailto:partneratyourhealthindia@gmail.com">partneratyourhealthindia@gmail.com</a>
   </div>
 </footer>
+<script>
+let installPrompt;
+const installButton=document.getElementById('install-app');
+const installNote=document.getElementById('install-note');
+
+window.addEventListener('beforeinstallprompt',event=>{
+  event.preventDefault();
+  installPrompt=event;
+});
+
+if('serviceWorker' in navigator && location.protocol!=='file:'){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));
+}
+
+installButton.addEventListener('click',async()=>{
+  if(installPrompt){
+    installPrompt.prompt();
+    const result=await installPrompt.userChoice;
+    installNote.textContent=result.outcome==='accepted'?'YourHealth is being installed.':'Installation was not completed. You can try again.';
+    installPrompt=null;
+    return;
+  }
+  const isiPhone=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isiPhone){
+    installNote.innerHTML='<strong>On iPhone:</strong> open the app, tap the Safari Share button, then choose Add to Home Screen.';
+  }else{
+    window.location.href='yourhealth-app-v9-patient-flow.html';
+  }
+});
+</script>
 </body>
 </html>
