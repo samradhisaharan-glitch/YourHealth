@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - YourHealth India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2f72ff;--blue2:#1d4ed8;--blue3:#0f3fb3;--soft:#eef6ff;--soft2:#f7fbff;
+  --ink:#09111f;--text:#162033;--muted:#667085;--line:#e7eef8;--white:#fff;
+  --shadow:0 18px 50px rgba(26,61,124,.10);--font:'Poppins',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body{font-family:var(--font);background:linear-gradient(180deg,#d9edff 0%,#f7fbff 46%,#fff 100%);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:var(--font)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,238,248,.85)}
+.nav{max-width:1180px;margin:0 auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--ink);letter-spacing:-.02em}
+.brand-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--blue),var(--blue2));display:grid;place-items:center;color:#fff;font-size:15px;font-weight:900;box-shadow:0 12px 26px rgba(47,114,255,.22)}
+.links{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:800;color:#475467}
+.links a:hover{color:var(--blue2)}
+.btn{border:0;background:var(--blue);color:#fff;padding:12px 18px;font-size:13px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px}
+.btn:hover{background:var(--blue2)}
+.btn.line{background:#fff;color:var(--blue2);border:1px solid var(--line)}
+.hero{padding:126px 24px 48px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,114,255,.08) 1px,transparent 1px),linear-gradient(rgba(47,114,255,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0%,transparent 72%)}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue2);font-weight:900;margin-bottom:12px}
+h1{font-size:60px;line-height:1.04;letter-spacing:-.055em;color:var(--ink);font-weight:900;max-width:760px}
+.intro{font-size:17px;line-height:1.8;color:#475467;margin-top:18px;max-width:720px}
+.contact-wrap{max-width:1180px;margin:0 auto;padding:10px 24px 80px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.panel,.form{background:#fff;box-shadow:var(--shadow);padding:28px}
+.contact-list{display:grid;gap:12px;margin-top:18px}
+.contact-card{background:var(--soft2);padding:17px;font-size:14px;color:var(--muted);font-weight:700}
+.contact-card strong{display:block;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.contact-card a{color:var(--blue2);font-weight:900}
+.page-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.page-links a{background:#fff;border:1px solid var(--line);padding:12px 13px;font-size:12px;font-weight:900;color:var(--blue2)}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.social-link{display:inline-flex;align-items:center;gap:10px;background:#0a66c2;color:#fff;padding:12px 15px;font-size:13px;font-weight:900}
+.social-link svg{width:20px;height:20px;display:block;fill:#fff}
+.field{display:grid;gap:7px;margin-bottom:14px}
+.field label{font-size:12px;font-weight:900;color:#344054}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;padding:13px 14px;font-size:13px;outline:none;color:var(--text)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+.field textarea{min-height:130px;resize:vertical}
+footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
+.footer-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px}
+.footer-inner a{color:#9aa8bd}
+@media(max-width:900px){
+  .links{display:none}
+  h1{font-size:40px}
+  .contact-wrap{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .nav{height:68px;padding:0 16px}
+  .hero{padding:104px 16px 36px}
+  .contact-wrap{padding:8px 16px 58px}
+  .page-links{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">YH</span>
+      <span>YourHealth India</span>
+    </a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="journey.html">Journey</a>
+      <a href="platform.html">Platform</a>
+      <a href="doctors-network.html">Doctor Network</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="records.html">Records</a>
+    </nav>
+    <a class="btn line" href="index.html">Back to Home</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="label">Contact Us</div>
+      <h1>Build the healthcare network with us.</h1>
+      <p class="intro">Reach YourHealth India for partnerships, doctor onboarding, hospital networks, insurance support and pharmacy integrations.</p>
+    </div>
+  </section>
+
+  <section class="contact-wrap">
+    <div class="panel">
+      <div class="label">Details</div>
+      <h2 style="font-size:28px;line-height:1.18;letter-spacing:-.04em;color:var(--ink)">YourHealth India</h2>
+      <div class="contact-list">
+        <div class="contact-card"><strong>Location</strong>Chandigarh, India</div>
+        <div class="contact-card"><strong>Email</strong><a href="mailto:partneratyourhealthindia@gmail.com">partneratyourhealthindia@gmail.com</a></div>
+        <div class="contact-card"><strong>For partners</strong>Hospitals, pharmacies, insurance networks and doctor onboarding.</div>
+      </div>
+
+      <div class="page-links" aria-label="Website pages">
+        <a href="index.html#home">Home</a>
+        <a href="journey.html">Patient Journey</a>
+        <a href="platform.html">Platform</a>
+        <a href="doctors-network.html">Doctor Network</a>
+        <a href="insurance.html">Insurance</a>
+        <a href="records.html">Digital Records</a>
+      </div>
+
+      <div class="social-row">
+        <a class="social-link" href="https://www.linkedin.com/in/yourhealthindia-undefined-60329b414/" target="_blank" rel="noopener" aria-label="YourHealth India on LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.33 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.55V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <form class="form" action="https://formsubmit.co/partneratyourhealthindia@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New YourHealth India contact enquiry">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="label">Enquiry</div>
+      <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="field"><label>Email or mobile</label><input type="text" name="contact" placeholder="Email or mobile number" required></div>
+      <div class="field"><label>I am interested in</label><select name="interest"><option>Patient app</option><option>Doctor signup</option><option>Insurance partnership</option><option>Hospital network</option><option>Pharmacy integration</option></select></div>
+      <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us what you want to build" required></textarea></div>
+      <button class="btn" type="submit" style="width:100%">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>2026 YourHealth India. All rights reserved.</span>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+    <a href="mailto:partneratyourhealthindia@gmail.com">partneratyourhealthindia@gmail.com</a>
+  </div>
+</footer>
+</body>
+</html>

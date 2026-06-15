@@ -1,0 +1,15 @@
+{
+  "appId": "com.yourhealth.patientflow",
+  "appName": "YourHealth App",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "always"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
