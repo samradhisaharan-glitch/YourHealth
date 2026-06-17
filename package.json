@@ -1,0 +1,48 @@
+{
+  "name": "yourhealth-desktop",
+  "version": "1.0.0",
+  "description": "YourHealth India desktop application",
+  "main": "main.js",
+  "author": "YourHealth India",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac dmg",
+    "build:win": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.yourhealth.desktop",
+    "productName": "YourHealth",
+    "asar": true,
+    "files": [
+      "main.js",
+      "app/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.medical",
+      "target": [
+        "dmg"
+      ]
+    },
+    "dmg": {
+      "title": "YourHealth"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
