@@ -26,29 +26,19 @@ a{text-decoration:none;color:inherit}
 .btn.line{background:#fff;color:var(--blue2);border:1px solid var(--line)}
 .hero{padding:126px 24px 76px;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,114,255,.08) 1px,transparent 1px),linear-gradient(rgba(47,114,255,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0%,transparent 72%)}
-.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr .9fr;gap:30px;align-items:center}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue2);font-weight:900;margin-bottom:12px}
 h1{font-size:60px;line-height:1.04;letter-spacing:-.055em;color:var(--ink);font-weight:900}
 .intro{font-size:17px;line-height:1.8;color:#475467;margin-top:18px;max-width:720px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.download-card{background:#fff;box-shadow:var(--shadow);padding:28px}
-.download-card h2{font-size:26px;line-height:1.18;letter-spacing:-.04em;color:var(--ink);font-weight:900}
-.download-card p{font-size:14px;line-height:1.7;color:var(--muted);margin-top:10px}
-.file-box{background:var(--soft2);border:1px solid var(--line);padding:15px;margin-top:18px;font-size:13px;font-weight:800;color:var(--ink);word-break:break-word}
 .install-note{margin-top:18px;padding:16px;background:var(--soft);color:#344054;font-size:13px;line-height:1.65}
 .install-note strong{color:var(--ink)}
-.steps{padding:70px 24px 84px;background:#fff}
-.inner{max-width:1180px;margin:0 auto}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{background:var(--soft2);padding:22px;min-height:170px}
-.step strong{display:grid;place-items:center;width:38px;height:38px;background:#fff;color:var(--blue2);font-size:14px;font-weight:900;margin-bottom:14px}
-.step h3{font-size:17px;font-weight:900;color:var(--ink)}
-.step p{font-size:13px;line-height:1.7;color:var(--muted);margin-top:8px}
 footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
 .footer-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px}
 .footer-inner a{color:#9aa8bd}
-@media(max-width:900px){.links{display:none}.hero-inner{grid-template-columns:1fr}h1{font-size:40px}.grid{grid-template-columns:1fr}}
-@media(max-width:620px){.nav{height:68px;padding:0 16px}.hero{padding:104px 16px 52px}.steps{padding-left:16px;padding-right:16px}}
+.actions{justify-content:center}
+@media(max-width:900px){.links{display:none}h1{font-size:40px}}
+@media(max-width:620px){.nav{height:68px;padding:0 16px}.hero{padding:104px 16px 52px}}
 </style>
 </head>
 <body>
@@ -72,36 +62,13 @@ footer{background:#07101f;color:#b7c0d1;padding:34px 24px}
       <div>
         <div class="label">Get Started</div>
         <h1>Download the YourHealth app.</h1>
-        <p class="intro">Choose your platform. Android and Windows download app files after they are uploaded. iPhone opens the iOS install path.</p>
         <div class="actions">
           <button class="btn" id="download-android" type="button">Download for Android</button>
           <button class="btn" id="download-ios" type="button">Download for iPhone</button>
           <button class="btn" id="download-windows" type="button">Download for Windows</button>
           <a class="btn line" href="YourHealth-macOS.zip" download>Download for macOS</a>
         </div>
-        <div class="install-note" id="install-note"><strong>Android:</strong> upload `YourHealth.apk`. <strong>Windows:</strong> upload `YourHealth-Windows-Setup.exe`. <strong>iPhone:</strong> Apple requires App Store/TestFlight, or Safari Share → Add to Home Screen.</div>
-      </div>
-      <div class="download-card">
-        <div class="label">App Downloads</div>
-        <h2>Android, iPhone, Windows and macOS</h2>
-        <p>Use direct downloads for Android, Windows and macOS. Use iPhone for the iOS install route. All platforms keep the same YourHealth flow.</p>
-        <div class="file-box">Android: YourHealth.apk · Windows: YourHealth-Windows-Setup.exe · iPhone: App Store/TestFlight or Home Screen</div>
-        <div class="actions">
-          <button class="btn" id="download-android-card" type="button">Android App</button>
-          <button class="btn line" id="download-ios-card" type="button">iPhone App</button>
-          <button class="btn line" id="download-windows-card" type="button">Windows App</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="steps">
-    <div class="inner">
-      <div class="label">Deploy Steps</div>
-      <div class="grid">
-        <div class="step"><strong>1</strong><h3>Android download</h3><p>Upload `YourHealth.apk` to this folder, then the Android button downloads the phone app directly.</p></div>
-        <div class="step"><strong>2</strong><h3>iPhone install</h3><p>Use TestFlight or App Store for a native iOS app. Until then, Safari can add YourHealth to the Home Screen.</p></div>
-        <div class="step"><strong>3</strong><h3>Windows download</h3><p>Build `YourHealth-Windows-Setup.exe` with GitHub Actions, upload it to this folder, then the Windows button downloads it.</p></div>
+        <div class="install-note" id="install-note"><strong>Select your device</strong> and the download will start when the app file is available.</div>
       </div>
     </div>
   </section>
@@ -147,11 +114,11 @@ async function androidDownload(){
     installPrompt=null;
     return;
   }
-  installNote.innerHTML='<strong>Android APK not uploaded yet.</strong> Build `YourHealth.apk` from GitHub Actions, upload it beside this page, then this button will download it.';
+  installNote.innerHTML='<strong>Android app is not available yet.</strong> Please check again after the Android download file is added.';
 }
 
 function iosDownload(){
-  installNote.innerHTML='<strong>iPhone:</strong> Apple does not allow direct app download from a normal website. Use TestFlight/App Store for native iOS, or open YourHealth in Safari and choose Share → Add to Home Screen.';
+  installNote.innerHTML='<strong>iPhone:</strong> iOS download will be available through TestFlight or the App Store. You can also open YourHealth in Safari and choose Share → Add to Home Screen.';
   setTimeout(()=>{ window.location.href='app.html'; }, 1200);
 }
 
@@ -163,7 +130,7 @@ async function windowsDownload(){
       return;
     }
   }catch(error){}
-  installNote.innerHTML='<strong>Windows installer not uploaded yet.</strong> Build `YourHealth-Windows-Setup.exe` from GitHub Actions, upload it beside this page, then this button will download it.';
+  installNote.innerHTML='<strong>Windows app is not available yet.</strong> Please check again after the Windows download file is added.';
 }
 
 androidButtons.forEach(button=>button.addEventListener('click',androidDownload));
